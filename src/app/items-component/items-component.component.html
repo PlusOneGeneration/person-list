@@ -1,0 +1,11 @@
+<!--<button (click)="init()">Init</button>-->
+<div *ngIf="items">
+    <ul *ngFor="let item of items">
+        <li [routerLink]="['/items', item.id]">
+            <p>{{item.displayName}}</p>
+        </li>
+    </ul>
+</div>
+<!--<div>-->
+    <!--<input type="text" [(ngModel)]="item.name">-->
+<!--</div>-->
