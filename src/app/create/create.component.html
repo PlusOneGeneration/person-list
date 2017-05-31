@@ -2,12 +2,9 @@
   <div>
     <form #itemForm="ngForm">
       <br>
-      <br>
       <input [(ngModel)]="item.displayName" placeholder="Name" type="text" name="displayName">
       <br>
-      <!--<input [(ngModel)]="phoneNumber.value" placeholder="Phone" type="text" name="value" >-->
-      <br>
-      <input [(ngModel)]="item.emails" placeholder="Email" type="text" name="emails">
+      <input [(ngModel)]="phoneNumber.value" placeholder="Phone" type="text" name="value" >
       <br>
       <button type="button" (click)="save()">Save</button>
       <button type="button" (click)="goBack()">Back</button>

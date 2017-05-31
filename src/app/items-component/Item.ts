@@ -1,38 +1,31 @@
-// export class Item {
-//     id: number = null;
-//     name: string = '';
-//     phone: number = null;
-// }
-
-export class Name{
+export class Name {
   familyName: string = null;
   givenName: string = null;
   formatted: string = null;
 }
 
-export class PhoneNumber{
+export class PhoneNumber {
   id: string = null;
   pref: boolean = false;
   value: string = '';
-  type: string = null;
+  type: string = "mobile";
 }
 
-export class Photo{
+export class Photo {
   id: string = null;
-  pref: boolean=false;
+  pref: boolean = false;
   type: string = null;
   value: string = null;
 }
 
-//
 export class Item {
   id: string = null;
   rawId?: string = null;
   displayName?: string = '';
   name?: Name;
-  nickname?: string = null
-  phoneNumbers?: PhoneNumber[];
-  emails?: string = '';
+  nickname?: string = null;
+  phoneNumbers?: PhoneNumber[] = [];
+  emails? = [];
   addresses?: string = null;
   ims?: string = null;
   organizations?: string = null;

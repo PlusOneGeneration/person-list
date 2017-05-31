@@ -23,6 +23,7 @@ export class CordovaService {
 
   removeContacts(contact):Promise<any> {
     return new Promise((resolve, reject) => {
+
       contact.remove(function (success) {
         resolve(success);
       }, function (error) {
@@ -33,6 +34,7 @@ export class CordovaService {
 
   saveContact(item: any) {
     return new Promise((resolve, reject) => {
+
       let myContact = navigator.contacts.create(item);
 
       myContact.save(function (success) {

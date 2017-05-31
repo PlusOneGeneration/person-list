@@ -24,7 +24,7 @@ export class CreateComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.params["id"];
     this.item = id ? this.itemService.getItem(id) : new Item();
-    // this.phoneNumber = id? this.item.phoneNumbers[0]: new PhoneNumber();
+    this.phoneNumber = id ? this.item.phoneNumbers[0] : new PhoneNumber();
   }
 
   goBack(): void {
@@ -32,9 +32,10 @@ export class CreateComponent implements OnInit {
   }
 
   save() {
+    this.item.phoneNumbers.push(this.phoneNumber);
+
     return this.cordovaService.saveContact(this.item)
       .then((result) => {
-        // this.itemService.save(result, this.item);
         this.itemService.getContacts();
         this.goBack();
       })
