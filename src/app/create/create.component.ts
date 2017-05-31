@@ -33,28 +33,26 @@ export class CreateComponent implements OnInit {
     this.location.back();
   }
 
+  cordovaSave() {
+    return new Promise((resolve, reject) => {
+      let myContact = navigator.contacts.create(this.item);
+
+      myContact.save(function (success) {
+          resolve(success);
+        },
+        function (error) {
+          reject(error);
+        })
+    });
+  }
+
   save() {
-    let self = this;
+    return this.cordovaSave()
+      .then((result) => {
+        this.itemService.save(result, this.item);
+      })
+      .catch((err) => console.log('err', err));
 
-    // self.item.phoneNumbers.push(self.phoneNumber);
-
-    let myContact = navigator.contacts.create(self.item);
-    myContact.save(contactSuccess, contactError);
-
-
-    function contactSuccess(contact) {
-      // self.goBack();
-      alert('Contact was saved');
-      let contacts = self.itemService.contacts$.getValue();
-      if (!self.item.id) {
-        contacts.push(contact);
-        self.itemService.contacts$.next(contacts)
-      }
-    }
-
-    function contactError(message) {
-      alert('Failed because: ' + message);
-    }
 
   }
 

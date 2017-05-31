@@ -8,20 +8,15 @@ export class ItemService {
   contacts$: any = new BehaviorSubject(null);
   items: Item[] = [];
 
-
   constructor() {
     console.log('service ready');
     this.contacts$.subscribe((contacts) => {
       this.items = contacts;
     });
 
-
-     let self = this;
-
-    console.log('this', self);
     // document.addEventListener("deviceready", self.onDeviceReady, false);
-    console.log('document', document);
   }
+
   //
   // onDeviceReady(event) {
   //
@@ -44,6 +39,14 @@ export class ItemService {
 
   getItem(id: string): Item {
     return this.items.find((item) => item.id === id)
+  }
+
+  save(contact, item) {
+    let contacts = this.contacts$.getValue();
+    if (!item.id) {
+      contacts.push(contact);
+      this.contacts$.next(contacts);
+    }
   }
 
 
