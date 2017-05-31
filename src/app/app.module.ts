@@ -11,6 +11,7 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
 import {ZoneService} from "./zone.service";
 import { CreateComponent } from './create/create.component';
 import {CordovaService} from "./cordova.service";
+import {Angular2FontawesomeModule} from "angular2-fontawesome";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {CordovaService} from "./cordova.service";
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    Angular2FontawesomeModule
   ],
   providers: [
     ItemService,

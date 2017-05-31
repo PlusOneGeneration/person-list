@@ -16,7 +16,6 @@ export class ItemsComponent implements OnInit {
 
   items: Item[] = [];
   contacts: Item[] = [];
-  self = this;
 
   constructor(private itemService: ItemService,
               private router: Router,
@@ -25,7 +24,6 @@ export class ItemsComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.itemService.getItems()
       .subscribe((items) => {
         this.zoneService.run(() => {
@@ -33,7 +31,6 @@ export class ItemsComponent implements OnInit {
           console.log('items', items);
         })
       })
-
   }
 
   deleteContact(contact) {

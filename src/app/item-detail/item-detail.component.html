@@ -1,3 +1,10 @@
-<div *ngIf="item">
-  <p>{{item.displayName}}</p>
+<div *ngIf="item" >
+  <div class="row">
+    <div class="col-xs-2">Name:</div>
+    <div class="col-xs-10">{{item.displayName}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2">Phone:</div>
+    <div class="col-xs-10">{{item.phoneNumbers[0].value}}</div>
+  </div>
 </div>

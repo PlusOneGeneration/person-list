@@ -1,21 +1,21 @@
 export class Name {
-  familyName: string = null;
-  givenName: string = null;
-  formatted: string = null;
+  familyName?: string = null;
+  givenName?: string = null;
+  formatted?: string = null;
 }
 
 export class PhoneNumber {
-  id: string = null;
-  pref: boolean = false;
-  value: string = '';
-  type: string = "mobile";
+  id?: string = null;
+  pref?: boolean = false;
+  value?: string = '';
+  type?: string = "mobile";
 }
 
 export class Photo {
-  id: string = null;
-  pref: boolean = false;
-  type: string = null;
-  value: string = null;
+  id?: string = null;
+  pref?: boolean = false;
+  type?: string = null;
+  value?: string = null;
 }
 
 export class Item {

@@ -1,15 +1,14 @@
-<button [routerLink]="['/create']">ADD CONTACT</button>
-
-
 <div *ngIf="items">
-  <ul *ngFor="let item of items">
-    <li>
-      <p [routerLink]="['/items', item.id]">{{item.displayName}}</p>
-      <button (click)="deleteContact(item)">Delete</button>
-      <button [routerLink]="['/items', item.id, 'edit']">Edit</button>
-      <!--<p><img src='"+item.photos[0].value+"'></p>-->
-      <!--<div [ngStyle]="{'background-image':'url(' + item.photos[0].value + ')'}"></div>-->
-    </li>
-  </ul>
-</div>
+  <div class="row" *ngFor="let item of items">
+    <div class="col-xs-8"
+         [routerLink]="['/items', item.id]">
+      {{item.displayName}}
+    </div>
 
+    <div class="col-xs-4">
+        <button type="button" class="btn btn-sm btn-link" (click)="deleteContact(item)">Delete</button>
+        <button type="button" class="btn btn-sm btn-link" [routerLink]="['/items', item.id, 'edit']">Edit</button>
+    </div>
+
+  </div>
+</div>
