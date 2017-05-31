@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ZoneService} from "./zone.service";
 import {ItemService} from "./items-component/item.service";
-declare var navigator: any;
+declare let navigator: any;
 
 @Component({
   selector: 'app-root',
@@ -10,32 +9,30 @@ declare var navigator: any;
 })
 export class AppComponent implements OnInit {
 
-  constructor(private zoneService: ZoneService,
-  private itemService: ItemService) {
+  constructor(private itemService: ItemService) {
   }
 
   ngOnInit() {
     document.addEventListener("deviceready", onDeviceReady, false);
     let self = this;
-
+    console.log('app ready');
 
     function onDeviceReady() {
-      // self.zoneService.run(() => {
-        alert('ready');
-        let filter = [""];
+      let filter = [""];
+      console.log('window', window);
 
-         navigator.contacts.find(filter, onSuccess, onError);
+      navigator.contacts.find(filter, onSuccess, onError);
 
-        function onSuccess(contacts) {
+      function onSuccess(contacts) {
 
-          self.itemService.contacts$.next(contacts)
+        self.itemService.contacts$.next(contacts)
 
-        };
+      };
 
-        function onError(contactError) {
-          alert('onError!');
-        };
-      // })
+      function onError(contactError) {
+        alert('onError!');
+      };
     }
   }
+
 }

@@ -13,7 +13,7 @@ export class Name{
 export class PhoneNumber{
   id: string = null;
   pref: boolean = false;
-  value: string = null;
+  value: string = '';
   type: string = null;
 }
 
@@ -28,11 +28,11 @@ export class Photo{
 export class Item {
   id: string = null;
   rawId?: string = null;
-  displayName?: string = null;
+  displayName?: string = '';
   name?: Name;
-  nickname?: string = null;
+  nickname?: string = null
   phoneNumbers?: PhoneNumber[];
-  emails?: string = null;
+  emails?: string = '';
   addresses?: string = null;
   ims?: string = null;
   organizations?: string = null;

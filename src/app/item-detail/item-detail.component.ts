@@ -4,22 +4,23 @@ import {ActivatedRoute} from "@angular/router";
 import {ItemService} from "../items-component/item.service";
 
 @Component({
-    selector: 'app-item-detail',
-    templateUrl: 'item-detail.component.html',
-    styleUrls: ['item-detail.component.css']
+  selector: 'app-item-detail',
+  templateUrl: 'item-detail.component.html',
+  styleUrls: ['item-detail.component.css']
 })
 export class ItemDetailComponent implements OnInit {
 
-    item: Item = null;
+  item: Item = null;
 
-    constructor(private route: ActivatedRoute,
-                private itemService: ItemService) {
-    }
+  constructor(private route: ActivatedRoute,
+              private itemService: ItemService) {
+  }
 
-    ngOnInit() {
-        const id = this.route.snapshot.params["id"];
-
-        this.item = this.itemService.getItem(id);
-    }
+  ngOnInit() {
+    const id = this.route.snapshot.params["id"];
+    console.log('id', id);
+    this.item = this.itemService.getItem(id);
+    console.log('this.item', this.item);
+  }
 
 }

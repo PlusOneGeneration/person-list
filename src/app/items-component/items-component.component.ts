@@ -4,6 +4,9 @@ import {ItemService} from "./item.service";
 import {Router} from "@angular/router";
 import {ZoneService} from "../zone.service";
 
+declare let navigator: any;
+declare let ContactFindOptions: any;
+
 @Component({
   selector: 'app-items-component',
   templateUrl: './items-component.component.html',
@@ -12,9 +15,8 @@ import {ZoneService} from "../zone.service";
 export class ItemsComponent implements OnInit {
 
   items: Item[] = [];
-  contacts:Item[] = [];
-
-  // item: Item = null;
+  contacts: Item[] = [];
+  self = this;
 
   constructor(private itemService: ItemService,
               private router: Router,
@@ -23,28 +25,48 @@ export class ItemsComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.item = new Item();
     this.itemService.getItems()
       .subscribe((items) => {
         this.zoneService.run(() => {
           this.items = items;
+          console.log('items', items);
         })
-
       })
-
-    // this.items = this.itemService.getItems();
 
   }
 
-  // init() {
-  //   this.zoneService.run(() => {
-  //     // this.contacts.forEach((contact) => {
-  //     //   this.items.push(contact);
-  //     // })
-  //
-  //
-  //   })
-  //
-  // }
+  deleteContact(contact) {
+    let self = this;
+    let options = new ContactFindOptions();
+    options.filter = contact.id;
+    options.multiple = false;
+    let fields = ["id"];
+
+    navigator.contacts.find(fields, contactfindSuccess, contactfindError, options);
+
+    function contactfindSuccess(contacts) {
+
+      let contact = contacts[0];
+      contact.remove(contactRemoveSuccess, contactRemoveError);
+
+      function contactRemoveSuccess() {
+        let contacts = self.items.filter((item) => {
+          return item.id !== contact.id;
+        });
+        console.log('contacts', contacts);
+        self.itemService.contacts$.next(contacts)
+
+      }
+
+      function contactRemoveError(message) {
+        alert('Failed because: ' + message);
+      }
+    }
+
+    function contactfindError(message) {
+      alert('Failed because: ' + message);
+    }
+
+  }
 
 }
