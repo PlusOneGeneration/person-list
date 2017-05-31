@@ -6,22 +6,23 @@ declare let ContactFindOptions: any;
 @Injectable()
 export class CordovaService {
 
-  constructor() {
-  }
+  deviceReady: boolean = false;
 
   findContact(fields: any, options: any) {
-    return new Promise((resolve, reject) => {
+    return this.isDeviceReady()
+      .then(() => {
+        return new Promise((resolve, reject) => {
+          navigator.contacts.find(fields, function (success) {
+            resolve(success);
+          }, function (error) {
+            reject(error)
+          }, options);
 
-      navigator.contacts.find(fields, function (success) {
-        resolve(success);
-      }, function (error) {
-        reject(error)
-      }, options);
-
-    });
+        });
+      });
   }
 
-  removeContacts(contact):Promise<any> {
+  removeContacts(contact): Promise<any> {
     return new Promise((resolve, reject) => {
 
       contact.remove(function (success) {
@@ -54,6 +55,19 @@ export class CordovaService {
     })
   }
 
+  isDeviceReady() {
+    if (!this.deviceReady) {
+      return this.addEventListener()
+        .then(() => {
+          this.deviceReady = true;
+          return Promise.resolve();
+        })
+        .catch((err) => {
+          return Promise.reject(err);
+        })
+    }
+    return Promise.resolve();
 
+  }
 
 }

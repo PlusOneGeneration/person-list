@@ -24,14 +24,10 @@ export class ItemService {
   }
 
   getContacts() {
-    this.cordovaService.addEventListener()
-      .then(() => {
         let filter = [""];
         this.cordovaService.findContact(filter, null)
           .then((contacts) => {
             this.contacts$.next(contacts)
           })
-      })
   }
-
 }
