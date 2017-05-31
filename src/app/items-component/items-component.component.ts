@@ -3,9 +3,6 @@ import {Item} from "./Item";
 import {ItemService} from "./item.service";
 import {Router} from "@angular/router";
 import {ZoneService} from "../zone.service";
-import {CordovaService} from "../cordova.service";
-
-declare let ContactFindOptions: any;
 
 @Component({
   selector: 'app-items-component',
@@ -19,8 +16,7 @@ export class ItemsComponent implements OnInit {
 
   constructor(private itemService: ItemService,
               private router: Router,
-              private  zoneService: ZoneService,
-              private cordovaService: CordovaService) {
+              private  zoneService: ZoneService) {
   }
 
   ngOnInit() {
@@ -32,23 +28,4 @@ export class ItemsComponent implements OnInit {
         })
       })
   }
-
-  deleteContact(contact) {
-    let options = new ContactFindOptions();
-    options.filter = contact.id;
-    options.multiple = false;
-    let fields = ["id"];
-    return this.cordovaService.findContact(fields, options)
-      .then((contacts) => {
-        let contact = contacts[0];
-        return this.cordovaService.removeContacts(contact)
-          .then(() => {
-            this.itemService.getContacts()
-          })
-          .catch((err) => console.log('err', err));
-      })
-      .catch((err) => console.log('err', err));
-
-  }
-
 }

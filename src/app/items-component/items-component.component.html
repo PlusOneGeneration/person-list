@@ -1,14 +1,9 @@
 <div *ngIf="items">
-  <div class="row" *ngFor="let item of items">
-    <div class="col-xs-8"
-         [routerLink]="['/items', item.id]">
-      {{item.displayName}}
+  <div class="row">
+    <div class="list-group">
+      <a class="list-group-item" style="font-size: 18px"
+         [routerLink]="['/items', item.id]"
+         *ngFor="let item of items">{{item.displayName}}</a>
     </div>
-
-    <div class="col-xs-4">
-        <button type="button" class="btn btn-sm btn-link" (click)="deleteContact(item)">Delete</button>
-        <button type="button" class="btn btn-sm btn-link" [routerLink]="['/items', item.id, 'edit']">Edit</button>
-    </div>
-
   </div>
 </div>
