@@ -10,6 +10,7 @@ import {ItemService} from "./items-component/item.service";
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 import {ZoneService} from "./zone.service";
 import { CreateComponent } from './create/create.component';
+import {CordovaService} from "./cordova.service";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CreateComponent } from './create/create.component';
   ],
   providers: [
     ItemService,
-    ZoneService
+    ZoneService,
+    CordovaService
   ],
   bootstrap: [AppComponent]
 })

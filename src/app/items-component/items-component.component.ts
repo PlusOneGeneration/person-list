@@ -3,8 +3,8 @@ import {Item} from "./Item";
 import {ItemService} from "./item.service";
 import {Router} from "@angular/router";
 import {ZoneService} from "../zone.service";
+import {CordovaService} from "../cordova.service";
 
-declare let navigator: any;
 declare let ContactFindOptions: any;
 
 @Component({
@@ -20,7 +20,8 @@ export class ItemsComponent implements OnInit {
 
   constructor(private itemService: ItemService,
               private router: Router,
-              private  zoneService: ZoneService) {
+              private  zoneService: ZoneService,
+              private cordovaService: CordovaService) {
   }
 
   ngOnInit() {
@@ -36,36 +37,20 @@ export class ItemsComponent implements OnInit {
   }
 
   deleteContact(contact) {
-    let self = this;
     let options = new ContactFindOptions();
     options.filter = contact.id;
     options.multiple = false;
     let fields = ["id"];
-
-    navigator.contacts.find(fields, contactfindSuccess, contactfindError, options);
-
-    function contactfindSuccess(contacts) {
-
-      let contact = contacts[0];
-      contact.remove(contactRemoveSuccess, contactRemoveError);
-
-      function contactRemoveSuccess() {
-        let contacts = self.items.filter((item) => {
-          return item.id !== contact.id;
-        });
-        console.log('contacts', contacts);
-        self.itemService.contacts$.next(contacts)
-
-      }
-
-      function contactRemoveError(message) {
-        alert('Failed because: ' + message);
-      }
-    }
-
-    function contactfindError(message) {
-      alert('Failed because: ' + message);
-    }
+    return this.cordovaService.findContact(fields, options)
+      .then((contacts) => {
+        let contact = contacts[0];
+        return this.cordovaService.removeContacts(contact)
+          .then(() => {
+            this.itemService.getContacts()
+          })
+          .catch((err) => console.log('err', err));
+      })
+      .catch((err) => console.log('err', err));
 
   }
 

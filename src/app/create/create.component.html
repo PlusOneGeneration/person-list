@@ -1,16 +1,16 @@
 <div *ngIf="item">
   <div>
-    <form #itemForm="ngForm" (ngSubmit)="save()">
+    <form #itemForm="ngForm">
       <br>
       <br>
-      <input [(ngModel)]="item.displayName" placeholder="Name" type="text" name="displayName" >
+      <input [(ngModel)]="item.displayName" placeholder="Name" type="text" name="displayName">
       <br>
       <!--<input [(ngModel)]="phoneNumber.value" placeholder="Phone" type="text" name="value" >-->
       <br>
-      <input [(ngModel)]="item.emails" placeholder="Email" type="text" name="emails" >
+      <input [(ngModel)]="item.emails" placeholder="Email" type="text" name="emails">
       <br>
-      <button type="submit">Save</button>
-      <!--<button [routerLink]="['/items']">Back</button>-->
+      <button type="button" (click)="save()">Save</button>
+      <button type="button" (click)="goBack()">Back</button>
     </form>
   </div>
 </div>
