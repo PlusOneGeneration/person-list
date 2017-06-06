@@ -20,11 +20,10 @@ export class ItemsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.itemService.getItems()
+    this.itemService.contacts$
       .subscribe((items) => {
         this.zoneService.run(() => {
           this.items = items;
-          console.log('items', items);
         })
       })
   }

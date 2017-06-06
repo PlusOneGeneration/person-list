@@ -15,8 +15,8 @@ export class ItemService {
     });
   }
 
-  getItems(): Observable<Item[]> {
-    return this.contacts$;
+  getItems(): Item[] {
+    return this.items;
   }
 
   getItem(id: string): Item {
@@ -24,10 +24,10 @@ export class ItemService {
   }
 
   getContacts() {
-        let filter = [""];
-        this.cordovaService.findContact(filter, null)
-          .then((contacts) => {
-            this.contacts$.next(contacts)
-          })
+    let filter = ["displayName"];
+    this.cordovaService.findContact(filter, null)
+      .then((contacts) => {
+        this.contacts$.next(contacts)
+      })
   }
 }

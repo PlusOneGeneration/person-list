@@ -13,10 +13,4 @@ module.exports = function(context) {
       cwd: basePath + '/..'
     }).toString('utf8')
   );
-  var files = fs.readdirSync(baseWWW);
-  for (var i = 0; i < files.length; i++) {
-    if (files[i].endsWith('.gz')) {
-      fs.unlinkSync(baseWWW + '/' + files[i]);
-    }
-  }
 };

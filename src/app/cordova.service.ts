@@ -8,6 +8,29 @@ export class CordovaService {
 
   deviceReady: boolean = false;
 
+  addEventListener() {
+    return new Promise((resolve, reject) => {
+      document.addEventListener("deviceready", function (success) {
+        resolve(success);
+      }, false);
+    })
+  }
+
+  isDeviceReady() {
+    if (!this.deviceReady) {
+      return this.addEventListener()
+        .then(() => {
+          this.deviceReady = true;
+          return Promise.resolve();
+        })
+        .catch((err) => {
+          return Promise.reject(err);
+        })
+    }
+    return Promise.resolve();
+
+  }
+
   findContact(fields: any, options: any) {
     return this.isDeviceReady()
       .then(() => {
@@ -47,27 +70,6 @@ export class CordovaService {
     });
   }
 
-  addEventListener() {
-    return new Promise((resolve, reject) => {
-      document.addEventListener("deviceready", function (success) {
-        resolve(success);
-      }, false);
-    })
-  }
 
-  isDeviceReady() {
-    if (!this.deviceReady) {
-      return this.addEventListener()
-        .then(() => {
-          this.deviceReady = true;
-          return Promise.resolve();
-        })
-        .catch((err) => {
-          return Promise.reject(err);
-        })
-    }
-    return Promise.resolve();
-
-  }
 
 }
