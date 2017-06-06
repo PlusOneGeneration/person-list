@@ -34,7 +34,7 @@
     "cordova-plugin-statusbar": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-statusbar@^2.2.3"
+            "id": "cordova-plugin-statusbar"
         },
         "is_top_level": true,
         "variables": {}
@@ -42,7 +42,7 @@
     "cordova-plugin-camera": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-camera@^2.4.1"
+            "id": "cordova-plugin-camera"
         },
         "is_top_level": true,
         "variables": {}
@@ -58,7 +58,7 @@
     "cordova-plugin-vibration": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-vibration@^2.1.5"
+            "id": "cordova-plugin-vibration"
         },
         "is_top_level": true,
         "variables": {}
