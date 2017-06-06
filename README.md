@@ -1,9 +1,7 @@
 # PersonListCordova
 
-Simple application that synchronize contacts in app and phone. Main view looks like this:
+Simple application that synchronize contacts in app and phone.
 ![Person list main view](https://github.com/PlusOneGeneration/person-list/blob/master/src/app/images/screen11.png)
-
-
 ![View for creation contact](https://github.com/PlusOneGeneration/person-list/blob/master/src/app/images/screen22.png)
 
 This project has written with:
