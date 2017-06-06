@@ -1,27 +1,30 @@
 # PersonListCordova
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.1.
+Simple application that synchronize contacts in app and phone. Main view looks like this:
+![Person list main view](https://github.com/PlusOneGeneration/person-list/blob/master/src/app/images/screen11.png)
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+![View for creation contact](https://github.com/PlusOneGeneration/person-list/blob/master/src/app/images/screen22.png)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+This project has written with:
+* [Angular.io](https://angular.io/)
+* [Apache Cordova](https://cordova.apache.org/)
+* [Cordova Contacts Plugin](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-contacts/)
+* [Cordova Splashscreen Plugin](https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-splashscreen/)
 
-## Build
+## Getting Started
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+* Install cordova ```npm install -g cordova```
+* Clone project from GitHub by SSH link ```git@github.com:PlusOneGeneration/person-list.git``` or HTTPS```https://github.com/PlusOneGeneration/person-list.git```
+* Run ```cordova run android```
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Built application for mobile
 
-## Running end-to-end tests
+For testing application on mobile :
+* run ```cordova build --release android```
+* go to ```cordova/platforms/android/build/outputs/apk``` and you have a ```android-armv7-release-unsigned.apk``` file and you just need to download it on your mobile and run!
+* run and install ```android-armv7-release-unsigned.apk```.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Authors
+* **_Irina Udovyk_** - developer
